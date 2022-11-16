@@ -7,9 +7,9 @@ import { AppContext } from '../../components/contextItem.js';
 import RenderListItem from './listItem.js'; 
 import uuid from 'react-uuid'
 
+//Renders the list of tasks onto the To-do panel
 const RenderList = props => {
     const { list } = props; 
-    const { } = useContext(AppContext); 
 
     return (
         <ListElement id = "ListElement">

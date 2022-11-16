@@ -7,8 +7,9 @@
     "\\src\\images",
     "\\src\\screens",
     "\\src\\screens\\guest",
-    "\\src\\screens\\todo"
+    "\\src\\screens\\todo",
+    "\\src\\test"
   ],
-  "SelectedNode": "\\README.md",
+  "SelectedNode": "\\package.json",
   "PreviewInSolutionExplorer": false
 }

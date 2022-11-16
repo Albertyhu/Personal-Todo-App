@@ -22,7 +22,6 @@ const RenderListItem = props => {
         index, 
     } = props;  
 
-
     //if displayMode is true, only display the task
     //if it's false, display the component that allows the user to edit the task 
     const [displayMode, setDisplayMode] = useState(true) 
@@ -83,6 +82,8 @@ const EditComponent = () => {
     } = useContext(AppContext);
     const [userInput, setInput] = useState(task); 
     const [error, setError] = useState('') 
+
+    //Handles the submission of changes to the task name
     const handleUserInput = event => {
         var user_input = event.target.value;
         if (user_input.length <= 25) {

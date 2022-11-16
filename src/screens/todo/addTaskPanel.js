@@ -28,6 +28,7 @@ const RenderAddPanel = props => {
         }
     }
 
+    //handles the submission of a new task item
     const handleSubmit = () => {
         var isValid = true; 
         if (newTask.length < 1) {
@@ -56,6 +57,9 @@ const RenderAddPanel = props => {
 
     useEffect(() => {
         setError('');
+        if (newTask.length === 25) {
+            setError("Your task name cannot be more than 25 characters.")
+        }
     }, [newTask])
 
 
@@ -72,16 +76,18 @@ const RenderAddPanel = props => {
                     onChange={handleInput}
                 /> 
             </AddPanelInputWrapper>
-            <ErrorField id = "AddPanelErrorField">
-                {error !== "" && <ErrorMessage>{error}</ErrorMessage>}
-            </ErrorField>
+            {error !== "" &&
+                <ErrorField id="AddPanelErrorField">
+                    <ErrorMessage>{error}</ErrorMessage>
+                </ErrorField>
+            }
             <AddPanelButtonWrapper id="AddPanelButtonWrapper">
                 <Button
                     BackgroundColor="#3847d9"
                     Color="#fff"
                     Transform="translateX(5px) translateY(5px)"
                     onClick={handleSubmit}
-                >Add</Button>
+                >Save</Button>
                 <Button
                     BackgroundColor="#dbdbdb"
                     Color="#000"

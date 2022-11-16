@@ -19,6 +19,7 @@ import { SearchQuery } from './searchFunction.js';
 
 //component for the Todo app 
 const App = () => {
+
     const {
         setToken,
         todoList, 
@@ -37,14 +38,16 @@ const App = () => {
         setDisplayAddPanel(false)
     }
 
+    //ref for the panel that allows the user to create a new task
+    //This supplements the feature of allowing the user to click out of the panel
     const AddPanelRef = useRef(); 
 
+    //Everytime the user types in a query on the search bar, display the search results 
     useEffect(() => {
-       // if (query.length > 0) {
-            setResults(SearchQuery(query, todoList));
-        //}
+        setResults(SearchQuery(query, todoList));
     }, [query])
 
+    //As the todo list gets updated, update the search query results as well. 
     useEffect(() => {
         setResults(todoList)
     }, [todoList])
@@ -52,26 +55,25 @@ const App = () => {
 
     return (
         <>
-            {displayAddPanel &&
-                <RenderAddPanel
-                closePanel={closePanel}
-                panelRef={AddPanelRef}
-                displayAddPanel={displayAddPanel}
-            />
-            }
             <TodoBody>
                 <SideColumn />
                 <MainColumn>
                     <Title>My To-Do List</Title>
-                    <TodoPanel>
+                    <TodoPanel id = "TodoPanel">
                         <TopSection>
                             <RenderSearchBar dispatch={setQuery} query={query}/>
                             <Button
-                                BackgroundColor="#3847d9"
+                                BackgroundColor="#648046"
                                 Color="#fff"
                                 onClick={() => { setDisplayAddPanel(true)}}
                             >New</Button>
                         </TopSection>
+                        {displayAddPanel &&
+                            <RenderAddPanel
+                                closePanel={closePanel}
+                                panelRef={AddPanelRef}
+                                displayAddPanel={displayAddPanel}
+                            />}
                         <RenderList list={results} />
                     </TodoPanel>
                 </MainColumn>

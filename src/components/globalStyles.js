@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const MainCont = styled.div`
     width: 100%; 
 `
-
 export const Button = styled.div`
     width: 100%;
     text-align: center; 
@@ -27,6 +26,7 @@ export const Title = styled.h2`
 export const TodoBody = styled.div`
 display: grid;
 grid-template-columns: 20% 60% 20%; 
+height: 100%;
 `
 
 export const TodoPanel = styled.div`
@@ -35,6 +35,8 @@ border: 2px solid #000000;
 width: 100%; 
 min-height: 500px;
 min-width: 150px;
+background-color: #ffffff;
+
 `
 export const TopSection = styled.div`
     width: 90%;
@@ -64,22 +66,11 @@ export const LogOutButton = styled.div`
     &:active{
         transform: ${props => props.Transform || "translateX(5px) translateY(5px)"}; 
     }
-    @media screen and (max-width: 1200px){
-    
-    }
-    @media screen and (max-width: 900px){
-    
-    }
-    @media screen and (max-width: 540px){
-    
-    }
-    @media screen and (max-width: 360px){
-    
-    }
 `
 
 export const ListItem = styled.div`
-    border-bottom: 1px solid #000; 
+    border-bottom: 1px solid #000;
+    border-top: 1px solid #000; 
     width: 100%; 
 `
 
@@ -156,16 +147,12 @@ export const IconWrapper = styled.div`
 `
 
 export const AddPanel = styled.div`
-    position: absolute;
-    border-radius: 10px; 
+
     border:1px solid #000; 
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    width: 300px; 
-    left: 0; 
-    right: 0; 
-    top: 30%;
     margin-left: auto; 
     margin-right: auto; 
+    width: 95%;
     background-color: ${props => props.BackgroundColor || "#fff"};
     @media screen and (min-width: 800px){
         width: 450px; 
@@ -180,7 +167,7 @@ export const AddPanelInputWrapper = styled.div`
 `
 
 export const AddPanelInput = styled.input`
-    width: auto;
+    width: 90%;
     border-radius: 10px; 
     outline: none; 
     border: none;

@@ -29,8 +29,13 @@ const LoginPage = () => {
         setToken
     } = useContext(AppContext)
 
-    const [email, setEmail] = useState('test@rapptrlabs.com')
-    const [password, setPassword] = useState('Test123')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    //for testing purposes
+    //const [email, setEmail] = useState('test@rapptrlabs.com')
+    //const [password, setPassword] = useState('Test123')
+
     const [validEmail, setValidEmail] = useState(false)
     const [validForm, setValidForm] = useState(false);
     const [hiddenPassword, setHiddenPass] = useState(true);
@@ -38,14 +43,19 @@ const LoginPage = () => {
     //Tracks whether use has typed into the input or not. 
     const [emailFirstTouch, setEmailTouch] = useState(false)
     const [passwordFirstTouch, setPassTouch] = useState(false)
+
+    //useState objects for displaying the errors
     const [emailError, setEmailError] = useState('');
     const [passError, setPassError] = useState('');
     const [submissionError, setSubmissionError] = useState('');
+
     var LoginRef = useRef(); 
     var FormElement = document.getElementById('MyForm')
 
     const handleEmail = event => {
-        setEmail(event.target.value);
+        var userinput = event.target.value;
+        if(userinput.length <= 50)
+            setEmail(userinput);
     }
 
     const handlePass = event => {
@@ -54,6 +64,7 @@ const LoginPage = () => {
             setPassword(event.target.value)
     }
 
+    //Toggles the visibility of the password
     const TogglePassword = () => {
         setHiddenPass(prev => !prev);
     }
@@ -64,33 +75,39 @@ const LoginPage = () => {
         setPassError('')
         setSubmissionError('')
         var isValid = true;
-        if (!checkEmail(email)) {
-            isValid = false;
-            if (emailFirstTouch) {
+
+        //if the user has interacted with the email field, run the following code 
+        if (emailFirstTouch) {
+            if (email.length === 0) {
+                setEmailError("The email field cannot be empty.")
+            }
+            else if (email.length > 0 && !checkEmail(email)) {
+                isValid = false;
                 setEmailError('Not a valid email')
             }
         }
-        if (password.length < 4) {
-            isValid = false;
-            if (passwordFirstTouch) {
+        //if the user has interacted with the password field, run the following code 
+        if (passwordFirstTouch) {
+            if (password.length < 4) {
+                isValid = false;
                 setPassError('Your password should be at least 4 characters')
             }
         }
         setValidForm(isValid);
     }
 
+    //method for handling the submission of the login form 
     const handleSubmit = useCallback(async (e) => {
         var isValid = true;
         if (email.length === 0) {
             isValid = false;
-            setEmailError("The email field cannot be empty.")
         }
 
         if (password.length < 4) {
             isValid = false;
-            setPassError("Your password has to be at least 4 characters");
         }
 
+        //If email and passwords are valid, execute the following 
         if (isValid) {
             const formData = new FormData(FormElement)
             const payload = new URLSearchParams(formData);
@@ -116,11 +133,20 @@ const LoginPage = () => {
                     console.log(e)
                 })
         }
-        else {
-            setSubmissionError("Please, fix the issues indicated above.")
-        }
     }, [email, password])
 
+    //This method allows the user to type the enter key to submit the form. 
+    const enterKeyEvent = e => {
+        FormElement = document.getElementById('MyForm')
+        e.preventDefault();
+        if (token === null && e.key === 'Enter') {
+            e.preventDefault()
+            handleSubmit();
+        }
+        e.stopImmediatePropagation();
+    }
+
+    //As the user types on the email field, the app constantly checks its validity
     useEffect(() => {
         if (checkEmail(email)) {
             setValidEmail(true)
@@ -137,7 +163,6 @@ const LoginPage = () => {
         }
     }, [email])
 
-
     useEffect(() => {
         if (password.length !== 0) {
             setPassTouch(true)
@@ -147,23 +172,17 @@ const LoginPage = () => {
         }
     }, [password])
 
+    //As the user types on the password and email field, the app checks their validity
     useEffect(() => {
         checkValidity();
-
         if (password.length === 16) {
             setPassError('The password cannot be more than 16 characters.')
         }
+        if (email.length === 50) {
+            setEmailError("Your email cannot be more than 50 characters.")
+        }
     }, [email, password])
 
-    const enterKeyEvent = e => {
-        FormElement = document.getElementById('MyForm')
-        e.preventDefault();
-        if (token === null && e.key === 'Enter') {
-            e.preventDefault()
-            handleSubmit();
-        }
-        e.stopImmediatePropagation();
-    }
     useEffect(() => {
         FormElement = document.getElementById('MyForm')
         document.addEventListener("keyup", enterKeyEvent)
@@ -186,7 +205,14 @@ const LoginPage = () => {
                 >
                     <InputField>
                         <SubTitle>Email</SubTitle>
-                        <InputWrapper>
+                        <InputWrapper
+                            id="InputWrapper"
+                            Border={emailError.length !== 0 ?
+                                "3px solid #da1839"
+                                :
+                                "1px solid #000000"
+                            }
+                        >
                             <IconWrapper><BsFillPersonFill /></IconWrapper>
                             <Input
                                 name="email"
@@ -204,12 +230,19 @@ const LoginPage = () => {
                             </IconWrapper>
                         </InputWrapper>
                         <ErrorField>{emailError.length !== 0 &&
-                            <ErrorMessage>{emailError}</ErrorMessage>}
+                            <ErrorMessage className="loginError">{emailError}</ErrorMessage>}
                         </ErrorField>
                     </InputField>
                     <InputField>
                         <SubTitle>Password</SubTitle>
-                        <InputWrapper>
+                        <InputWrapper
+                            id="InputWrapper"
+                            Border={passError.length !== 0 ? 
+                                "3px solid #da1839"
+                                :
+                                "1px solid #000000"
+                                }
+                        >
                             <IconWrapper><AiFillLock /></IconWrapper>
                             <Input
                                 name = 'password'
@@ -228,20 +261,20 @@ const LoginPage = () => {
                         </InputWrapper>
                         <ErrorField>
                             {passError.length !== 0 &&
-                                <ErrorMessage>{passError}</ErrorMessage>}
+                                <ErrorMessage className="loginError">{passError}</ErrorMessage>}
                         </ErrorField>
                     </InputField>
                     <FormButton
                         type="submit"
                         value = "Login"
                         Opacity={validForm ? "1.0" : "0.5"}
-                        BackgroundColor="#3847d9"
+                        BackgroundColor="#648046"
                         Color="#fff"
                         Transform={validForm ? "translateX(5px) translateY(5px)" : "none"}
                     ></FormButton>
                     <ErrorField>
                         {submissionError !== "" &&
-                            <ErrorMessage>{submissionError}</ErrorMessage>}
+                            <ErrorMessage className="loginError">{submissionError}</ErrorMessage>}
                     </ErrorField>
                 </Form> 
             </Shell>

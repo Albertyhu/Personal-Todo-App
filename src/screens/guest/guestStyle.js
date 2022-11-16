@@ -13,6 +13,7 @@ export const Form = styled.form`
 `
 
 export const InputWrapper = styled.div`
+    background-color: #fff;
     margin-top: 10px;
     display: grid;
     grid-template-columns: 10% 80% 10%; 
@@ -21,9 +22,7 @@ export const InputWrapper = styled.div`
     border: 1px solid rgba(0, 0, 0, 0.3); 
     border-radius: 10px; 
     justify-content: center; 
-    &:focus {
-    border: 1px solid red; 
-}
+    border: ${props => props.Border || "1px solid #000000"};  
     @media screen and (max-width: 380px){
             grid-template-columns: 10% 80% 10%; 
     }    
@@ -34,7 +33,7 @@ export const InputField = styled.label`
     display: grid;
     grid-template-rows: 16% 42% 42%;
     height: 100px;
-    row-gap: 10px;
+    row-gap: 15px;
     margin: 40px auto;
 ` 
 
@@ -44,10 +43,9 @@ export const Input = styled.input`
     padding-left: 10px;
     border: 0px;
     border-radius: 20px;
-    &:focus {
-        border: none;
-        outline: none;
-    }
+    border: none;
+    outline: none;
+    
 `
 
 export const ErrorField = styled.div`
@@ -62,10 +60,19 @@ export const ErrorField = styled.div`
 `
 export const ErrorMessage = styled.div`
     color: #d93838;
-   
+    &.loginError{
+        font-weight: bold;
+        font-size: 15px;
+        margin-top: 5px;
+        margin-left: 5px;
+        background-color: rgba(255,255,255, 0.5);
+    }
 `
 
-export const Title = styled.h2`
+export const Title = styled.div`
+    padding-top: 25px;
+    font-size: 25px; 
+    font-weight: bold;
     text-align: center; 
 ` 
 export const SubTitle = styled.h3`

@@ -8,11 +8,13 @@ import {
     IconWrapper
 } from '../../components/globalStyles.js'; 
 
+//Renders the search bar component
 const RenderSearchBar = props => {
     const {
         dispatch,
         query
     } = props; 
+
     const handleInput = event => {
         dispatch(event.target.value)
     }
