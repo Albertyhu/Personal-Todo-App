@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\components",
+    "\\src\\screens",
+    "\\src\\screens\\guest",
+    "\\src\\screens\\todo"
+  ],
+  "SelectedNode": "\\src\\screens\\guest\\login.js",
+  "PreviewInSolutionExplorer": false
+}
