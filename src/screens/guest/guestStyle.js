@@ -15,7 +15,7 @@ export const Form = styled.form`
 export const InputWrapper = styled.div`
     margin-top: 10px;
     display: grid;
-    grid-template-columns: 5% 90% 5%; 
+    grid-template-columns: 10% 80% 10%; 
     width: 100%;    
     height: 100%;
     border: 1px solid rgba(0, 0, 0, 0.3); 
@@ -52,6 +52,11 @@ export const Input = styled.input`
 
 export const ErrorField = styled.div`
     height: 30px; 
+    &#AddPanelErrorField{
+    height: 50px;
+    width: 90%;
+    margin: 0px auto;
+}
 
 `
 export const ErrorMessage = styled.div`
