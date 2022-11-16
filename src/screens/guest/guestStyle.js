@@ -52,11 +52,12 @@ export const Input = styled.input`
 
 export const ErrorField = styled.div`
     height: 30px; 
-    &#AddPanelErrorField{
-    height: 50px;
-    width: 90%;
-    margin: 0px auto;
-}
+    &#AddPanelErrorField, &#EditError{
+        height: 50px;
+        width: 90%;
+        margin: 0px auto;
+    }
+
 
 `
 export const ErrorMessage = styled.div`

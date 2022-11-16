@@ -108,6 +108,10 @@ const EditComponent = () => {
         }
     }
 
+    useEffect(() => {
+        setError('')
+    }, [userInput])
+
     return (
         <>
             <ListItemWrapper id="ListItemWrapper">
@@ -121,9 +125,11 @@ const EditComponent = () => {
                     onClick={handleSave}
                 >Save</Button>
             </ListItemWrapper>
-            <ErrorField>
-                {error !== '' && error !== null && <ErrorMessage>{error}</ErrorMessage>}
-            </ErrorField>
+            {error !== '' && error !== null &&
+                <ErrorField id="EditError">
+                     <ErrorMessage>{error}</ErrorMessage>
+                </ErrorField>
+            }
         </>
 
             )

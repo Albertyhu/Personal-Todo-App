@@ -46,29 +46,11 @@ const RenderAddPanel = props => {
             closePanel();
         }
     }
-
-
     document.addEventListener('mousedown', checkIfClickedOutside)
-
-    document.addEventListener('keyup', e => {
-        if (e.key === "Enter" && displayAddPanel) {
-            handleSubmit();
-            e.stopImmediatePropagation()
-        }
-    })
 
     useEffect(() => {
         return () => {
             document.removeEventListener('mousedown', checkIfClickedOutside)
-
-            document.removeEventListener('keyup', e => {
-                if (e.key == "Enter" && displayAddPanel) {
-                    handleSubmit();
-                    e.stopImmediatePropagation()
-
-                }
-            })
-
         }
     }, [])
 

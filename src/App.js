@@ -8,12 +8,14 @@ const TODOLIST = "todoList"
 
 function App() {
     //localStorage.clear();
+    var storageToken = localStorage.getItem('token') !== "undefined" ? JSON.parse(localStorage.getItem('token')) : null; 
     var storageTodo = JSON.parse(localStorage.getItem(TODOLIST));
 
-    const [token, setToken] = useState(JSON.parse(localStorage.getItem('token')))
+    const [token, setToken] = useState(storageToken)
     const [todoList, setList] = useState(localStorage.todoList ? storageTodo : [])
 
     const context = {
+        token, 
         setToken, 
         todoList, 
         addTask: (task) => {
@@ -34,12 +36,6 @@ function App() {
             localStorage.setItem(TODOLIST, JSON.stringify(arr))
         }
     }
-
-    //may cause problems 
-    //useEffect(() => {
-    //    console.log("todoList", todoList)
-    //    localStorage.setItem('todoList', todoList)
-    //}, [todoList])
 
     return (
       <AppContext.Provider value =  {context}>

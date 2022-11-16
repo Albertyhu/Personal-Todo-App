@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useContext } from 'react'; 
+import React, { useState, useEffect, useCallback, useContext, useRef } from 'react'; 
 import { MainCont, IconWrapper, } from '../../components/globalStyles.js'; 
 import {
     Shell,
@@ -25,6 +25,7 @@ import { AppContext } from "../../components/contextItem.js";
 
 const LoginPage = () => {
     const {
+        token,
         setToken
     } = useContext(AppContext)
 
@@ -40,7 +41,7 @@ const LoginPage = () => {
     const [emailError, setEmailError] = useState('');
     const [passError, setPassError] = useState('');
     const [submissionError, setSubmissionError] = useState('');
-
+    var LoginRef = useRef(); 
     var FormElement = document.getElementById('MyForm')
 
     const handleEmail = event => {
@@ -94,7 +95,6 @@ const LoginPage = () => {
             const formData = new FormData(FormElement)
             const payload = new URLSearchParams(formData);
                 
-            console.log("Payload", payload)
             await fetch("http://dev.rapptrlabs.com/Tests/scripts/user-login.php", {
                 method: "POST",
                 body: payload
@@ -107,9 +107,9 @@ const LoginPage = () => {
                     else {
                         setSubmissionError("")
                     }
-                    var token = JSON.stringify(response.user_token); 
-                    setToken(token)
-                    localStorage.setItem("token", token )
+                    var newToken = JSON.stringify(response.user_token); 
+                    setToken(newToken)
+                    localStorage.setItem("token", newToken )
                     console.log(response)
                 })
                 .catch(e => {
@@ -155,42 +155,34 @@ const LoginPage = () => {
         }
     }, [email, password])
 
-    document.addEventListener("keypress", e => {
-        if (e.key === 'Enter') {
+    const enterKeyEvent = e => {
+        FormElement = document.getElementById('MyForm')
+        e.preventDefault();
+        if (token === null && e.key === 'Enter') {
+            e.preventDefault()
             handleSubmit();
         }
-    })
-
-
-
+        e.stopImmediatePropagation();
+    }
     useEffect(() => {
         FormElement = document.getElementById('MyForm')
+        document.addEventListener("keyup", enterKeyEvent)
 
-        FormElement?.addEventListener("submit", e => {
-            e.preventDefault();
-            handleSubmit();
-        })
-
-        return () => {
-            FormElement?.removeEventListener("submit", e => {
-                e.preventDefault();
-                handleSubmit();
-            })
-
-            document.removeEventListener("keypress", e => {
-                if (e.key === 'Enter') {
-                    handleSubmit();
-                }
-            })
-        }
+        return () => document.removeEventListener("keyup", enterKeyEvent);
+       
     }, [])
 
     return (
-        <MainCont>
+        <MainCont ref={LoginRef} className = "MainCont">
             <Shell>
                 <Title>Rapptr Labs</Title>
                 <Form
                     id="MyForm"
+                    onSubmit={(e) => {
+                        e.preventDefault();
+                        console.log("submitted")
+                        handleSubmit();
+                    }}
                 >
                     <InputField>
                         <SubTitle>Email</SubTitle>
