@@ -8,3 +8,9 @@ I did spend a lot of time resolving bugs with the app and trying to figure out h
 Building the To-do screen and styling it took me nearly 6 hours. 
 
 I spend the remaining time giving the finishing touches to styling. 
+
+Live Link: https://albertyhu.github.io/Personal-Todo-App/
+
+To test the app, use the following login information:
+email: test@rapptrlabs.com 
+password: Test123

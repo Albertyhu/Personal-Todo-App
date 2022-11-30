@@ -10,6 +10,6 @@
     "\\src\\screens\\todo",
     "\\src\\test"
   ],
-  "SelectedNode": "\\package.json",
+  "SelectedNode": "\\src\\screens\\todo\\searchFunction.js",
   "PreviewInSolutionExplorer": false
 }
