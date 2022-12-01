@@ -1,7 +1,6 @@
 {
   "ExpandedNodes": [
     "",
-    "\\public",
     "\\src",
     "\\src\\components",
     "\\src\\images",
@@ -10,6 +9,6 @@
     "\\src\\screens\\todo",
     "\\src\\test"
   ],
-  "SelectedNode": "\\src\\screens\\todo\\searchFunction.js",
+  "SelectedNode": "\\src\\screens\\todo\\index.js",
   "PreviewInSolutionExplorer": false
 }

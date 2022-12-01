@@ -1,27 +1,26 @@
 body {
-/*    font-family: 'Comic Sans MS'; */
-font-family: sans-serif;
-    padding: 0;
-    margin: 0; 
+  /*    font-family: 'Comic Sans MS'; */
+  font-family: sans-serif;
+  padding: 0;
+  margin: 0;
 }
 
 .App {
-    height: 120vh;
-    margin: 0;
-    background-image: url('./images/flower.jpg');
-    background-repeat: no-repeat;
-    background-position-x: 34%;
-    background-size: cover;
-    
+  height: 120vh;
+  margin: 0;
+  background-image: url('./images/flower.jpg');
+  background-repeat: no-repeat;
+  background-position-x: 34%;
+  background-size: cover;
 }
 
 @media screen and (min-width: 500px) {
-    .App {
-        background-position-x: 50%;
-    }
+  .App {
+    background-position-x: 50%;
+  }
 }
 @media screen and (min-width: 1000px) {
-    .App {
-        background-position: center;
-    }
+  .App {
+    background-position: center;
+  }
 }
