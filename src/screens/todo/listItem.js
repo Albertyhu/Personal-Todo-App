@@ -7,8 +7,8 @@ import {
   IconWrapper,
   TaskText,
   EditInput
-} from '../../style/globalStyles.js';
-import { ErrorField, ErrorMessage } from '../../style/guestStyle.js';
+} from '../../components/globalStyles.js';
+import { ErrorField, ErrorMessage } from '../../components/errorMessage.js';
 import { AppContext, ListItemContext } from '../../contextItem.js';
 import { BsFillPencilFill } from 'react-icons/bs';
 import { FiTrash2 } from 'react-icons/fi';

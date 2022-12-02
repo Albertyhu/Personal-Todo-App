@@ -6,8 +6,8 @@ import {
   AddPanelInputWrapper,
   AddPanelInput,
   AddPanelButtonWrapper
-} from '../../style/globalStyles.js';
-import { ErrorField, ErrorMessage } from '../../style/guestStyle.js';
+} from '../../components/globalStyles.js';
+import { ErrorField, ErrorMessage } from '../../components/errorMessage.js';
 import { AppContext } from '../../contextItem.js';
 import PropTypes from 'prop-types';
 /* eslint-disable */

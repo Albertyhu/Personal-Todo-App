@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListElement } from '../../style/globalStyles.js';
+import { ListElement } from '../../components/globalStyles.js';
 import RenderListItem from './listItem.js';
 import uuid from 'react-uuid';
 import PropTypes from 'prop-types';

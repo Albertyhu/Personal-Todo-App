@@ -1,6 +1,6 @@
 import React from 'react';
 import { BiSearchAlt2 } from 'react-icons/bi';
-import { SearchInput, SearchWrapper, IconWrapper } from '../../style/globalStyles.js';
+import { SearchInput, SearchWrapper, IconWrapper } from '../globalStyles.js';
 import PropTypes from 'prop-types';
 /* eslint-disable */
 

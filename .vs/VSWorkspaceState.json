@@ -2,13 +2,14 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\components",
+    "\\src\\hooks",
     "\\src\\images",
     "\\src\\screens",
     "\\src\\screens\\guest",
     "\\src\\screens\\todo",
+    "\\src\\style",
     "\\src\\test"
   ],
-  "SelectedNode": "\\src\\screens\\todo\\index.js",
+  "SelectedNode": "\\src\\hooks\\searchFunction.js",
   "PreviewInSolutionExplorer": false
 }

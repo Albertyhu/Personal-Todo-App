@@ -1,24 +1,26 @@
+/* eslint-disable */
 import React, { useState, useEffect, useCallback, useContext, useRef } from 'react';
-import { MainCont, IconWrapper } from '../../style/globalStyles.js';
+import { MainCont, IconWrapper } from '../../components/globalStyles.js';
 import {
   Shell,
   Form,
   InputWrapper,
   Input,
   InputField,
-  ErrorField,
-  ErrorMessage,
   Title,
   SubTitle,
   GreenCheckMarkWrapper,
   FormButton
-} from '../../style/guestStyle.js';
+} from './guestStyle.js';
 import { checkEmail } from '../../hooks/checkEmail.js';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { IoIosCheckmarkCircleOutline } from 'react-icons/io';
 import { AiFillLock, AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { AppContext } from '../../contextItem.js';
-/* eslint-disable */
+import {
+    ErrorField,
+    ErrorMessage
+} from '../../components/errorMessage.js'; 
 
 const LoginPage = () => {
   const { token, setToken } = useContext(AppContext);
@@ -180,7 +182,7 @@ const LoginPage = () => {
   return (
     <MainCont ref={LoginRef} className="MainCont">
       <Shell>
-        <Title>Rapptr Labs</Title>
+        <Title>Task App</Title>
         <Form
           id="MyForm"
           onSubmit={(e) => {
@@ -201,7 +203,7 @@ const LoginPage = () => {
               <Input
                 name="email"
                 type="text"
-                placeholder="user@rapptrilabs.com"
+                placeholder="user@gmail.com"
                 value={email}
                 onChange={(evt) => {
                   handleEmail(evt);

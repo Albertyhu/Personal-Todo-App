@@ -9,12 +9,12 @@ import {
   SideColumn,
   LogOutButton,
   TopSection
-} from '../../style/globalStyles.js';
+} from '../../components/globalStyles.js';
 import { AppContext } from '../../contextItem.js';
 import RenderList from './renderList.js';
 import RenderAddPanel from './addTaskPanel.js';
-import RenderSearchBar from './search.js';
-import { SearchQuery } from '../../hooks/searchFunction.js';
+import RenderSearchBar from '../../components/search';
+import { SearchQuery } from '../../components/search/searchFunction.js';
 
 //component for the Todo app
 const App = () => {
