@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Personal-Todo-App/static/css/main.f2c4d0dd.css",
-    "main.js": "/Personal-Todo-App/static/js/main.81e34cef.js",
+    "main.js": "/Personal-Todo-App/static/js/main.7fad74bc.js",
     "static/media/flower.jpg": "/Personal-Todo-App/static/media/flower.0d8c4a6a76a42192b250.jpg",
     "index.html": "/Personal-Todo-App/index.html",
     "main.f2c4d0dd.css.map": "/Personal-Todo-App/static/css/main.f2c4d0dd.css.map",
-    "main.81e34cef.js.map": "/Personal-Todo-App/static/js/main.81e34cef.js.map"
+    "main.7fad74bc.js.map": "/Personal-Todo-App/static/js/main.7fad74bc.js.map"
   },
   "entrypoints": [
     "static/css/main.f2c4d0dd.css",
-    "static/js/main.81e34cef.js"
+    "static/js/main.7fad74bc.js"
   ]
 }
